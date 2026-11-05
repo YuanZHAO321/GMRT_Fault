@@ -1,0 +1,8 @@
+# 运行两个笔记本所需的包（网页版不需要安装任何东西，计算在浏览器里完成）
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+scikit-image>=0.22
+tifffile>=2024.1.30
+pyproj>=3.6
+jupyterlab

@@ -1,0 +1,232 @@
+{
+ "format": "gmrt-fault-params",
+ "format_version": 1,
+ "created_utc": "2026-11-05T21:34:46Z",
+ "producer": "GMRT_fault_development.ipynb",
+ "dataset": {
+  "aoi_name": "mar29n",
+  "bbox": [
+   -43.75,
+   -42.55,
+   28.74,
+   29.36
+  ],
+  "gmrt_res": "max",
+  "epsg": 32623,
+  "pixel_m": 50.0,
+  "grid": [
+   2360,
+   1414
+  ],
+  "valid_frac": 0.8466
+ },
+ "params": {
+  "SIGMA_M": 75.0,
+  "ORIENT_TOL_DEG": 45.0,
+  "SLOPE_HIGH_DEG": 12.35,
+  "SLOPE_LOW_DEG": 8.82,
+  "STOP_SLOPE_DEG": 6.82,
+  "EDGE_BUFFER_M": 150.0,
+  "SIMPLIFY_TOL_M": 30.0,
+  "MIN_CANDIDATE_M": 300.0,
+  "MIN_LENGTH_M": 500.0,
+  "MIN_THROW_M": 0.0,
+  "MAX_STRIKE_DEV_DEG": 90.0,
+  "USE_SCORER": true,
+  "SCORER_FEATURES": [
+   "log10_length_m",
+   "log10_throw_m",
+   "throw_iqr_rel",
+   "scarp_slope_deg",
+   "peak_slope_deg",
+   "log10_width_m",
+   "straightness",
+   "strike_dev_deg",
+   "facing_consistency"
+  ],
+  "SCORER_MEAN": [
+   2.97665,
+   2.14311,
+   0.409322,
+   15.6107,
+   20.5966,
+   2.70688,
+   0.939218,
+   16.3156,
+   0.962246
+  ],
+  "SCORER_SCALE": [
+   0.210443,
+   0.21825,
+   0.277425,
+   3.5875,
+   5.19331,
+   0.144503,
+   0.0490594,
+   12.1769,
+   0.0286938
+  ],
+  "SCORER_COEF": [
+   0.583723,
+   -5.04096,
+   -0.246409,
+   2.56599,
+   -0.540208,
+   3.39513,
+   0.184188,
+   -0.317642,
+   0.358989
+  ],
+  "SCORER_INTERCEPT": -0.217409,
+  "SCORER_THRESHOLD": 0.736845,
+  "KEEP_OUTWARD": false,
+  "STRIKE_FIXED": null,
+  "REL_STOP": 0.25,
+  "RISE_TOL_DEG": 2.0,
+  "MAX_WALK_M": 2000.0,
+  "MIN_PIXEL_THROW_M": 20.0,
+  "LINK_GAP_M": 500.0,
+  "LINK_ANGLE_DEG": 25.0
+ },
+ "alternatives": {
+  "stats_fdr": {
+   "MIN_LENGTH_M": 3250.0,
+   "MIN_THROW_M": 10.0,
+   "MAX_STRIKE_DEV_DEG": 45.0,
+   "USE_SCORER": false
+  }
+ },
+ "units": {
+  "SIGMA_M": "m",
+  "ORIENT_TOL_DEG": "°",
+  "SLOPE_HIGH_DEG": "°",
+  "SLOPE_LOW_DEG": "°",
+  "STOP_SLOPE_DEG": "°",
+  "EDGE_BUFFER_M": "m",
+  "SIMPLIFY_TOL_M": "m",
+  "MIN_CANDIDATE_M": "m",
+  "MIN_LENGTH_M": "m",
+  "MIN_THROW_M": "m",
+  "MAX_STRIKE_DEV_DEG": "°",
+  "USE_SCORER": "",
+  "SCORER_FEATURES": "",
+  "SCORER_MEAN": "",
+  "SCORER_SCALE": "",
+  "SCORER_COEF": "",
+  "SCORER_INTERCEPT": "",
+  "SCORER_THRESHOLD": "",
+  "KEEP_OUTWARD": "",
+  "STRIKE_FIXED": "°",
+  "REL_STOP": "",
+  "RISE_TOL_DEG": "°",
+  "MAX_WALK_M": "m",
+  "MIN_PIXEL_THROW_M": "m",
+  "LINK_GAP_M": "m",
+  "LINK_ANGLE_DEG": "°"
+ },
+ "notes": {
+  "SIGMA_M": "步骤 6：尺度选择（脊线坡度双峰程度 Ashman D 最大）",
+  "ORIENT_TOL_DEG": "步骤 5：纹理方向统计（80% 权重半宽，限制在 20–45°）",
+  "SLOPE_HIGH_DEG": "步骤 7：坡度混合模型后验 P(陡坎) = 0.9",
+  "SLOPE_LOW_DEG": "步骤 7：后验 P(陡坎) = 0.5",
+  "STOP_SLOPE_DEG": "步骤 7：坡度第 30 百分位（坡折）",
+  "EDGE_BUFFER_M": "步骤 7：max(2 像元, 2σ)",
+  "SIMPLIFY_TOL_M": "步骤 7：max(0.6 像元, 30 m)",
+  "MIN_CANDIDATE_M": "步骤 7：max(300 m, 6 像元)",
+  "MIN_LENGTH_M": "步骤 12–13：机器学习接受规则",
+  "MIN_THROW_M": "步骤 12–13：机器学习接受规则",
+  "MAX_STRIKE_DEV_DEG": "步骤 12–13：机器学习接受规则",
+  "USE_SCORER": "步骤 12–13：使用 target-decoy 逻辑回归评分器",
+  "SCORER_FEATURES": "步骤 12：评分器使用的形态特征",
+  "SCORER_MEAN": "步骤 12：特征标准化的均值",
+  "SCORER_SCALE": "步骤 12：特征标准化的尺度",
+  "SCORER_COEF": "步骤 12：标准化后的逻辑回归系数",
+  "SCORER_INTERCEPT": "步骤 12：逻辑回归截距",
+  "SCORER_THRESHOLD": "步骤 13：估计 FDR 0.100（目标 0.1）时的 P(断层) 阈值",
+  "KEEP_OUTWARD": "步骤 15：外倾陡坎精确度 0.096（随机 0.147），内倾 0.262（随机 0.122）",
+  "STRIKE_FIXED": "固定常数：None = 用结构张量自动估计区域走向",
+  "REL_STOP": "固定常数：坡度 < REL_STOP × 峰值坡度时视为到达坡折",
+  "RISE_TOL_DEG": "固定常数：坡度回升超过它视为进入下一条陡坎",
+  "MAX_WALK_M": "固定常数：沿倾向最远走的距离",
+  "MIN_PIXEL_THROW_M": "固定常数：单个中心线像元的最小断距",
+  "LINK_GAP_M": "固定常数：连接共线线段的最大间隙",
+  "LINK_ANGLE_DEG": "固定常数：连接时允许的最大方向变化"
+ },
+ "diagnostics": {
+  "effective_resolution_m": 600.517752938534,
+  "spectral_beta": 3.801045692727854,
+  "noise_m": 0.0,
+  "fabric_strike_deg": 22.012393245585727,
+  "orient_tol80_deg": 45.101409879251534,
+  "ashman_d": {
+   "50": 1.4638951082217626,
+   "75": 1.499417386169972,
+   "100": 1.4859502235810407,
+   "150": 1.385397682689824
+  },
+  "fdr_target": 0.1,
+  "n_surrogates": 4,
+  "seed": 0,
+  "stats_fdr": {
+   "estimated_fdr": 0.0955438160512589,
+   "retained_km": 1263.0642411425906
+  },
+  "ml": {
+   "cv_auc": 0.72131108448244,
+   "estimated_fdr": 0.09952628127260339,
+   "retained_km": 2230.0453191705064,
+   "n_target": 3740,
+   "n_decoy": 17043
+  },
+  "feature_auc": {
+   "log10_length_m": 0.6213808989953199,
+   "log10_throw_m": 0.49398175774302405,
+   "throw_iqr_rel": 0.4856315599352067,
+   "scarp_slope_deg": 0.485368839110689,
+   "peak_slope_deg": 0.4758048425568721,
+   "log10_width_m": 0.49149644288954886,
+   "straightness": 0.5533744666119698,
+   "strike_dev_deg": 0.41501771208847404,
+   "facing_consistency": 0.5605733464736916,
+   "truncated_frac": 0.6927497701256811
+  },
+  "tobi_check": {
+   "reference": {
+    "n": 579,
+    "km": 1625.9099307502738,
+    "prec_all": 0.21166169659285577,
+    "prec_all_chance": 0.12231754827299751,
+    "recall": 0.33254458359785305,
+    "recall_chance": 0.1953406052211385,
+    "prec_inward": 0.23126012001142965,
+    "prec_inward_chance": 0.11307668945455919,
+    "prec_outward": 0.1725579627518054,
+    "prec_outward_chance": 0.14097479068767418
+   },
+   "stats": {
+    "n": 249,
+    "km": 1266.311363648067,
+    "prec_all": 0.22767973572111624,
+    "prec_all_chance": 0.1175555776911023,
+    "recall": 0.24464708258786863,
+    "recall_chance": 0.1398587945595506,
+    "prec_inward": 0.25156759468271883,
+    "prec_inward_chance": 0.11109261068455228,
+    "prec_outward": 0.17370359875318786,
+    "prec_outward_chance": 0.1329971140268776
+   },
+   "ml": {
+    "n": 824,
+    "km": 2235.7384798104586,
+    "prec_all": 0.20173966122386694,
+    "prec_all_chance": 0.13095648578379238,
+    "recall": 0.39025797887689734,
+    "recall_chance": 0.2657894230584252,
+    "prec_inward": 0.2615825505492756,
+    "prec_inward_chance": 0.1223117666869684,
+    "prec_outward": 0.09581513315485417,
+    "prec_outward_chance": 0.14665192772986743
+   }
+  }
+ }
+}
